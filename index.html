@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Barbearia Aliança</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #111;
+            color: #eee;
+        }
+        header {
+            background: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            max-width: 150px;
+        }
+        h1 {
+            margin: 20px 0 10px;
+            font-size: 2rem;
+        }
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        form input, form select, form button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: #eee;
+            font-size: 1rem;
+        }
+        form button {
+            background: #4CAF50;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        form button:hover {
+            background: #45a049;
+        }
+        .sobre {
+            margin-top: 40px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 8px;
+        }
+        .sobre h2 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="Logo Barbearia Aliança">
+        <h1>Barbearia Aliança</h1>
+    </header>
+
+    <div class="container">
+        <form id="agendamentoForm">
+            <input type="text" id="nome" placeholder="Nome e Sobrenome" required />
+            <input type="text" id="contato" placeholder="Telefone para contato" required />
+            <input type="date" id="data" required />
+            <input type="time" id="horario" required />
+            <select id="servico" required>
+                <option value="">Escolha o serviço</option>
+                <option value="Corte de Cabelo">Corte de Cabelo</option>
+                <option value="Barba">Barba</option>
+                <option value="Corte + Barba">Corte + Barba</option>
+                <option value="Sobrancelha">Sobrancelha</option>
+            </select>
+            <button type="button" onclick="enviarWhatsApp()">Agendar no WhatsApp</button>
+        </form>
+
+        <div class="sobre">
+            <h2>Sobre Nós</h2>
+            <p>Na Barbearia Aliança, você encontra o melhor em estilo e tradição. Nosso compromisso é entregar um atendimento de excelência, respeitando o seu tempo e seu visual. Venha viver essa experiência!</p>
+        </div>
+    </div>
+
+    <script>
+        function enviarWhatsApp() {
+            const nome = document.getElementById('nome').value;
+            const contato = document.getElementById('contato').value;
+            const data = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+            const servico = document.getElementById('servico').value;
+
+            const mensagem = "Agendamento Barbearia Aliança:%0A" +
+                             "Nome: " + nome + "%0A" +
+                             "Contato: " + contato + "%0A" +
+                             "Data: " + data + "%0A" +
+                             "Horário: " + horario + "%0A" +
+                             "Serviço: " + servico;
+
+            const telefone = '5571984045772';
+            const url = "https://wa.me/" + telefone + "?text=" + mensagem;
+
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
